@@ -1,0 +1,36 @@
+diff -r --ignore-all-space ./controllers/report.ctrl.php /var/www/szepe.net/server/seo/controllers/report.ctrl.php
+76c76
+< 		switch($searchInfo['doc_type']){
+---
+>         switch(@$searchInfo['doc_type']){
+676a676
+>                     error_log('Regex not matched - CAPTCHA pos:' . stripos($pageContent, 'CAPTCHA'));
+diff -r --ignore-all-space ./controllers/seotools.ctrl.php /var/www/szepe.net/server/seo/controllers/seotools.ctrl.php
+46c46
+< 		switch($info['menu_sec']){
+---
+> 		switch(@$info['menu_sec']){
+diff -r --ignore-all-space ./graphical-reports.php /var/www/szepe.net/server/seo/graphical-reports.php
+39c39
+< 	switch($_POST['sec']){
+---
+> 	switch(@$_POST['sec']){
+47c47
+< 	switch($_GET['sec']){
+---
+> 	switch(@$_GET['sec']){
+diff -r --ignore-all-space ./includes/sp-load.php /var/www/szepe.net/server/seo/includes/sp-load.php
+71c71
+< 		error_reporting(E_ALL ^ E_NOTICE);
+---
+> 		error_reporting(E_ALL ^ E_NOTICE ^ E_STRICT);
+diff -r --ignore-all-space ./libs/validation.class.php /var/www/szepe.net/server/seo/libs/validation.class.php
+38c38
+< 		$this->Filters['startGenName'] = $Filters['nameGen'];
+---
+> 		$this->Filters['startGenName'] = $this->Filters['nameGen'];
+diff -r --ignore-all-space ./seo-tools.php /var/www/szepe.net/server/seo/seo-tools.php
+43c43
+< 	switch($_GET['sec']){
+---
+> 	switch(@$_GET['sec']){

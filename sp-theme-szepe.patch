@@ -1,0 +1,10 @@
+diff -wr ./views/layout/default.ctp.php /var/www/szepe.net/seopanel/themes/simple/views/layout/default.ctp.php
+9d8
+<         $spKey = "v" . substr(SP_INSTALLED, 2);
+76c74
+< <?php if(false && empty($_COOKIE['hidenews'])){ ?>
+---
+> <?php if(empty($_COOKIE['hidenews'])){ ?>
+diff -wr ./views/menu/adminmenu.ctp.php /var/www/szepe.net/seopanel/themes/simple/views/menu/adminmenu.ctp.php
+6d5
+< $supportClass = "";
