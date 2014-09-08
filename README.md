@@ -10,6 +10,21 @@ find -not -path '*/.*' -type f \( -path "*.php" -o -path "*.js" -o -path "*.css"
 find -not -path '*/.*' -type f \( -path "*.php" -o -path "*.js" -o -path "*.css" \) -exec sed -i 's/[ \t]*$//' \{\} \;
 ```
 
+#git clone https://github.com/szepeviktor/Seo-Panel.git
+
+#git pull
+#git checkout master
+#git checkout patches
+#git checkout install
+# update: SP_INSTALLED in config/sp-config.php
+
+#USER="www-data"
+#chown -R ${USER}:${USER} *
+#chmod 400 config/sp-config.php
+#chmod -R 750 tmp
+
+# go to: http:// ... install/upgrade.php
+#rm -rf install
 
 - - -
 
