@@ -10,6 +10,7 @@ find -not -path '*/.*' -type f \( -path "*.php" -o -path "*.js" -o -path "*.css"
 find -not -path '*/.*' -type f \( -path "*.php" -o -path "*.js" -o -path "*.css" \) -exec sed -i 's/[ \t]*$//' \{\} \;
 ```
 
+```bash
 #git clone https://github.com/szepeviktor/Seo-Panel.git
 
 #git pull
@@ -25,6 +26,7 @@ find -not -path '*/.*' -type f \( -path "*.php" -o -path "*.js" -o -path "*.css"
 
 # go to: http:// ... install/upgrade.php
 #rm -rf install
+```
 
 - - -
 
