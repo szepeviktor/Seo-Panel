@@ -68,7 +68,7 @@ if(file_exists(SP_ABSPATH."/config/sp-config.php")){
 	if (SP_DEBUG){
 		@ini_set("display_erros", "On");
 		@ini_set("display_startup_errors", "On");
-		error_reporting(E_ALL ^ E_NOTICE);
+		error_reporting(E_ALL ^ E_NOTICE ^ E_STRICT);
 	} else {
 		@ini_set("display_erros", "Off");
 		@ini_set("display_startup_errors", "Off");

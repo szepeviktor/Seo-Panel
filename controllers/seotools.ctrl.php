@@ -43,7 +43,7 @@ class SeoToolsController extends Controller{
 
 		$this->set('menuList', $menuList);
 		$defaultArgs = empty($info['default_args']) ? "" : urldecode($info['default_args']);
-		switch($info['menu_sec']){
+		switch(@$info['menu_sec']){
 
 			case "sitemap-generator":
 				$defaultScript = "sitemap.php";

@@ -40,7 +40,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	}
 
 }else{
-	switch($_GET['sec']){
+	switch(@$_GET['sec']){
 
 		default:
 			$controller->index($_GET);
