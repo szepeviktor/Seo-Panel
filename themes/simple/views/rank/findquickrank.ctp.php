@@ -1,17 +1,17 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">
 		<td class="left"><?=$spText['common']['Id']?></td>
-		<td><?=$spText['common']['Url']?></td>		
+		<td><?=$spText['common']['Url']?></td>
 		<td><?=$spText['common']['Google Pagerank']?></td>
 		<td class="right"><?=$spText['common']['Alexa Rank']?></td>
 	</tr>
 	<?php
-	$colCount = 4; 
+	$colCount = 4;
 	if(count($list) > 0){
 		$catCount = count($list);
 		$i = 0;
 		foreach($list as $url){
-			
+
 			$class = ($i % 2) ? "blue_row" : "white_row";
             if($catCount == ($i + 1)){
                 $leftBotClass = "tab_left_bot";
@@ -19,7 +19,7 @@
             }else{
                 $leftBotClass = "td_left_border td_br_right";
                 $rightBotClass = "td_br_right";
-            }            
+            }
 			?>
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>"><?=($i+1)?></td>
@@ -38,9 +38,9 @@
 			<?php
 			$i++;
 		}
-	}else{	 
-		echo showNoRecordsList($colCount-2);		
-	} 
+	}else{
+		echo showNoRecordsList($colCount-2);
+	}
 	?>
 	<tr class="listBot">
 		<td class="left" colspan="<?=($colCount-1)?>"></td>

@@ -6,12 +6,12 @@
 		<td class="right">Bing</td>
 	</tr>
 	<?php
-	$colCount = 4; 
+	$colCount = 4;
 	if(count($list) > 0){
 		$catCount = count($list);
 		$i = 0;
 		foreach($list as $url){
-			
+
 			$class = ($i % 2) ? "blue_row" : "white_row";
             if($catCount == ($i + 1)){
                 $leftBotClass = "tab_left_bot";
@@ -20,7 +20,7 @@
                 $leftBotClass = "td_left_border td_br_right";
                 $rightBotClass = "td_br_right";
             }
-            $tdWidth = "80px";            
+            $tdWidth = "80px";
 			?>
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>" style="text-align:left;padding-left:10px;"><?=$url?></td>
@@ -43,9 +43,9 @@
 			<?php
 			$i++;
 		}
-	}else{	 
-		echo showNoRecordsList($colCount-2);		
-	} 
+	}else{
+		echo showNoRecordsList($colCount-2);
+	}
 	?>
 	<tr class="listBot">
 		<td class="left" colspan="<?=($colCount-1)?>"></td>

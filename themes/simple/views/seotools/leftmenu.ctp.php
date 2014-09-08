@@ -1,10 +1,10 @@
 <script>
 	var menuList = new Array();
 	var buttonList = new Array();
-	var scriptList = new Array();	
+	var scriptList = new Array();
 </script>
 <ul id="menu">
-<?php 
+<?php
 foreach($menuList as $i => $menuInfo){
 	if($menuSelected == $menuInfo['url_section']){
 			$imgSrc = "hide";
@@ -33,7 +33,7 @@ foreach($menuList as $i => $menuInfo){
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('reports.php?sec=reportsum', 'content')"><?=$spTextTools['Keyword Position Summary']?></a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('reports.php', 'content')"><?=$spTextTools['Detailed Position Reports']?></a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('graphical-reports.php', 'content')"><?=$spTextTools['Graphical Position Reports']?></a></li>
-				<li><a href="javascript:void(0);" onclick="scriptDoLoad('reports.php?sec=kwchecker', 'content')"><?=$spTextTools['Quick Position Checker']?></a></li>				
+				<li><a href="javascript:void(0);" onclick="scriptDoLoad('reports.php?sec=kwchecker', 'content')"><?=$spTextTools['Quick Position Checker']?></a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('keywords.php', 'content')"><?=$spTextTools['Keywords Manager']?></a></li>
 	         	<li><a href="javascript:void(0);" onclick="scriptDoLoad('keywords.php', 'content', 'sec=import')"><?=$spTextKeyword['Import Keywords']?></a></li>
 			    <?php if(SP_USER_GEN_REPORT || isAdmin()){ ?>
@@ -46,10 +46,10 @@ foreach($menuList as $i => $menuInfo){
 			</ul>
 			<?php
 			break;
-			
+
 		case "site-auditor":
 			?>
-			<script type="text/javascript">scriptList[<?=$i?>] = 'siteauditor.php';</script>			
+			<script type="text/javascript">scriptList[<?=$i?>] = 'siteauditor.php';</script>
 			<ul id='subui'>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('siteauditor.php', 'content')"><?=$spTextTools['Auditor Projects']?></a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('siteauditor.php?sec=viewreports', 'content')"><?=$spTextTools['Auditor Reports']?></a></li>
@@ -62,19 +62,19 @@ foreach($menuList as $i => $menuInfo){
 			</ul>
 			<?php
 			break;
-			
+
 		case "sitemap-generator":
 			?>
-			<script type="text/javascript">scriptList[<?=$i?>] = 'sitemap.php';</script>			
+			<script type="text/javascript">scriptList[<?=$i?>] = 'sitemap.php';</script>
 			<ul id='subui'>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('sitemap.php', 'content')"><?=$spTextTools['Google Sitemap Generator']?></a></li>
 			</ul>
 			<?php
 			break;
-			
+
 		case "rank-checker":
 			?>
-			<script type="text/javascript">scriptList[<?=$i?>] = 'rank.php?sec=google';</script>			
+			<script type="text/javascript">scriptList[<?=$i?>] = 'rank.php?sec=google';</script>
 			<ul id='subui'>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('rank.php?sec=quickrank', 'content')"><?=$spTextTools['Quick Rank Checker']?></a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('rank.php?sec=reports', 'content')"><?=$spTextTools['Rank Reports']?></a></li>
@@ -88,10 +88,10 @@ foreach($menuList as $i => $menuInfo){
 			</ul>
 			<?php
 			break;
-			
+
 		case "backlink-checker":
 			?>
-			<script type="text/javascript">scriptList[<?=$i?>] = 'backlinks.php';</script>			
+			<script type="text/javascript">scriptList[<?=$i?>] = 'backlinks.php';</script>
 			<ul id='subui'>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('backlinks.php', 'content')"><?=$spTextTools['Quick Backlinks Checker']?></a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('backlinks.php?sec=reports', 'content')"><?=$spTextTools['Backlinks Reports']?></a></li>
@@ -105,10 +105,10 @@ foreach($menuList as $i => $menuInfo){
 			</ul>
 			<?php
 			break;
-			
+
 		case "directory-submission":
 			?>
-			<script type="text/javascript">scriptList[<?=$i?>] = 'directories.php';</script>			
+			<script type="text/javascript">scriptList[<?=$i?>] = 'directories.php';</script>
 			<ul id='subui'>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('directories.php', 'content')"><?=$spTextTools['Automatic Submission']?></a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('directories.php?sec=featured', 'content')"><?=$spTextTools['Featured Submission']?></a></li>
@@ -117,21 +117,21 @@ foreach($menuList as $i => $menuInfo){
 				<?php if(SP_USER_GEN_REPORT || isAdmin()){ ?>
 					<?php if(SP_DEMO){?>
 		         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();"><?=$spTextTools['Check Submission Status']?></a></li>
-		         	<?php }else{?>	         		
+		         	<?php }else{?>
 						<li><a href="javascript:void(0);" onclick="scriptDoLoad('directories.php?sec=checksub', 'content')"><?=$spTextTools['Check Submission Status']?></a></li>
 		         	<?php }?>
 		     	<?php }?>
 			</ul>
 			<?php
-			break;			
-			
+			break;
+
 		case "saturation-checker":
 			?>
-			<script type="text/javascript">scriptList[<?=$i?>] = 'saturationchecker.php';</script>			
+			<script type="text/javascript">scriptList[<?=$i?>] = 'saturationchecker.php';</script>
 			<ul id='subui'>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('saturationchecker.php', 'content')"><?=$spTextTools['Quick Saturation Checker']?></a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('saturationchecker.php?sec=reports', 'content')"><?=$spTextTools['Saturation Reports']?></a></li>
-				<?php if(SP_USER_GEN_REPORT || isAdmin()){ ?>				
+				<?php if(SP_USER_GEN_REPORT || isAdmin()){ ?>
 					<?php if(SP_DEMO){?>
 		         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();"><?=$spTextTools['Generate Saturation Reports']?></a></li>
 		         	<?php }else{?>

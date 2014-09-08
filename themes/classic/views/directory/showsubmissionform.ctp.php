@@ -1,10 +1,10 @@
 <? if(!empty($msg)){
-	$msgClass = empty($error) ? "success" : "error"; 
+	$msgClass = empty($error) ? "success" : "error";
 	?>
 		<p class="dirmsg">
 			<font class="<?=$msgClass?>"><?=$msg?></font>
 		</p>
-	<? 
+	<?
 	}
 ?>
 <form id="submissionForm" name="submissionForm">
@@ -18,15 +18,15 @@
 	<tr class="listHead">
 		<td class="left" style="width: 30%"><?=$spTextTools['directory-submission']?></td>
 		<td class="right">&nbsp;</td>
-	</tr>		
+	</tr>
 	<tr class="white_row">
 		<td class="td_left_col"><?=$spText['common']['Directory']?>:</td>
 		<td class="td_right_col"><a href="<?=$dirInfo['submit_url']?>" target="_blank"><?=$dirInfo['domain']?></a></td>
-	</tr>		
+	</tr>
 	<tr class="blue_row">
 		<td class="td_left_col"><?=$spText['common']['Google Pagerank']?>:</td>
 		<td class="td_right_col"><?=$dirInfo['google_pagerank']?></td>
-	</tr>		
+	</tr>
 	<tr class="white_row">
 		<td class="td_left_col"><?=$spText['common']['Category']?>:</td>
 		<td class="td_right_col"><?=$categorySel?></td>
@@ -38,7 +38,7 @@
 				<input type="text" name="reciprocal_url" value="<?=$reciprocalUrl?>" style="width: 300px;">
 			</td>
 		</tr>
-	<? } ?>	
+	<? } ?>
 	<? if(!empty($captchaUrl)){ ?>
 		<tr class="blue_row">
 			<td class="td_left_col"><?=$spTextDir['Enter the code shown']?>:</td>
@@ -50,7 +50,7 @@
 				<p><img src='<?=$captchaUrl?>'></p>
 			</td>
 		</tr>
-	<? } ?>		
+	<? } ?>
 	<tr class="white_row">
 		<td class="tab_left_bot_noborder"></td>
 		<td class="tab_right_bot"></td>

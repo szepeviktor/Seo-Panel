@@ -35,39 +35,39 @@ $controller->spTextSettings = $controller->getLanguageTexts('settings', $_SESSIO
 $controller->set('spTextSettings', $controller->spTextSettings);
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-	
+
 	switch($_POST['sec']){
-		
+
 		case "update":
 			$controller->updateSystemSettings($_POST);
 			break;
 	}
-	
+
 }else{
 	switch($_GET['sec']){
-		
+
 		case "reportsettings":
 			$controller->showSystemSettings('report');
 			break;
-		
+
 		case "proxysettings":
 			$controller->showSystemSettings('proxy');
 			break;
-		
+
 		case "aboutus":
 			$controller->showAboutUs();
 			break;
-		
+
 		case "version":
 			$controller->showVersion();
 			break;
-		
+
 		case "checkversion":
 			$controller->checkVersion();
 			break;
 
 		default:
-		    $category = empty($_GET['category']) ? 'system' : $_GET['category']; 
+		    $category = empty($_GET['category']) ? 'system' : $_GET['category'];
 			$controller->showSystemSettings($category);
 			break;
 	}

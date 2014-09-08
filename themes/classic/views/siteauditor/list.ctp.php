@@ -23,22 +23,22 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">
 		<td class="leftid"><input type="checkbox" id="checkall" onclick="checkList('checkall')"></td>
-		<td><?=$spText['common']['Id']?></td>		
+		<td><?=$spText['common']['Id']?></td>
 		<td><?=$spText['common']['Website']?></td>
-		<?php if(!empty($isAdmin)){ ?>		
+		<?php if(!empty($isAdmin)){ ?>
 			<td><?=$spText['common']['User']?></td>
-		<?php } ?>		
-		<td><?=$spTextSA['Maximum Pages']?></td>		
-		<td><?=$spTextSA['Pages Found']?></td>		
-		<td><?=$spTextSA['Crawled Pages']?></td>		
+		<?php } ?>
+		<td><?=$spTextSA['Maximum Pages']?></td>
+		<td><?=$spTextSA['Pages Found']?></td>
+		<td><?=$spTextSA['Crawled Pages']?></td>
 		<td><?=$spText['label']['Cron']?></td>
-		<td><?=$spText['label']['Score']?></td>		
+		<td><?=$spText['label']['Score']?></td>
 		<td><?=$spText['label']['Updated']?></td>
 		<td><?=$spText['common']['Status']?></td>
 		<td class="right"><?=$spText['common']['Action']?></td>
 	</tr>
 	<?php
-	$colCount = empty($isAdmin) ? 11 : 12; 
+	$colCount = empty($isAdmin) ? 11 : 12;
 	if(count($list) > 0){
 		$catCount = count($list);
 		foreach($list as $i => $listInfo){
@@ -54,7 +54,7 @@
 			?>
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>"><input type="checkbox" name="ids[]" value="<?=$listInfo['id']?>"></td>
-				<td class="td_br_right"><?=$listInfo['id']?></td>				
+				<td class="td_br_right"><?=$listInfo['id']?></td>
 				<td class="td_br_right left"><?=$websiteLink?></td>
 				<?php if(!empty($isAdmin)){ ?>
 					<td class="td_br_right left"><?=$listInfo['username']?></td>
@@ -72,7 +72,7 @@
 			            $scoreClass = 'plus';
 			        }
 			        for($b=0;$b<=$listInfo['score'];$b++) echo "<span class='$scoreClass'>&nbsp;</span>";
-				    ?>					
+				    ?>
 				</td>
 				<td class="td_br_right bold"><?=$listInfo['last_updated']?></td>
 				<td class="td_br_right"><?php echo $listInfo['status'] ? $spText['common']["Active"] : $spText['common']["Inactive"];	?></td>
@@ -84,7 +84,7 @@
 						}else{
 							$statVal = "Activate";
 							$statLabel = $spText['common']["Activate"];
-						} 
+						}
 					?>
 					<select style="width: 110px;" name="action" id="action<?=$listInfo['id']?>" onchange="doAction('siteauditor.php', 'content', 'project_id=<?=$listInfo['id']?>&pageno=<?=$pageNo?>', 'action<?=$listInfo['id']?>')">
 						<option value="select">-- <?=$spText['common']['Select']?> --</option>
@@ -105,9 +105,9 @@
 			</tr>
 			<?php
 		}
-	}else{	 
-		echo showNoRecordsList($colCount-2);		
-	} 
+	}else{
+		echo showNoRecordsList($colCount-2);
+	}
 	?>
 	<tr class="listBot">
 		<td class="left" colspan="<?=($colCount-1)?>"></td>
@@ -121,7 +121,7 @@ if (SP_DEMO) {
     $actFun = "confirmSubmit('siteauditor.php', 'listform', 'content', '&sec=activateall&pageno=$pageNo')";
     $inactFun = "confirmSubmit('siteauditor.php', 'listform', 'content', '&sec=inactivateall&pageno=$pageNo')";
     $delFun = "confirmSubmit('siteauditor.php', 'listform', 'content', '&sec=deleteall&pageno=$pageNo')";
-}   
+}
 ?>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="actionSec">
 	<tr>

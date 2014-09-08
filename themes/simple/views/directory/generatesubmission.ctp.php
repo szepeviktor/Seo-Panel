@@ -9,12 +9,12 @@
 		<td class="right"><?=$spText['common']['Status']?></td>
 	</tr>
 	<?php
-	$colCount = 4; 
+	$colCount = 4;
 	if(count($list) > 0){
 		$catCount = count($list);
 		$i = 0;
 		foreach($list as $listInfo){
-			
+
 			$class = ($i % 2) ? "blue_row" : "white_row";
             if($catCount == ($i + 1)){
                 $leftBotClass = "tab_left_bot";
@@ -30,15 +30,15 @@
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>" style='text-align:left;padding-left:10px;'><?=$listInfo['domain']?></td>
 				<td class='td_br_right'><?php echo date('Y-m-d', $listInfo['submit_time']); ?></td>
-				<td class='td_br_right'><?=$confirm?></td>				
+				<td class='td_br_right'><?=$confirm?></td>
 				<td class="<?=$rightBotClass?>" id="<?=$statusId?>"><?=$checkStatusLink?></td>
 			</tr>
 			<?php
 			$i++;
 		}
 	}else{
-		echo showNoRecordsList($colCount-2);		
-	} 
+		echo showNoRecordsList($colCount-2);
+	}
 	?>
 	<tr class="listBot">
 		<td class="left" colspan="<?=($colCount-1)?>"></td>

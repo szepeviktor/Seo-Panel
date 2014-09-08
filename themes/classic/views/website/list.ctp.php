@@ -23,9 +23,9 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">
 		<td class="leftid"><input type="checkbox" id="checkall" onclick="checkList('checkall')"></td>
-		<td><?=$spText['common']['Id']?></td>		
+		<td><?=$spText['common']['Id']?></td>
 		<td><?=$spText['common']['Website']?></td>
-		<?php if(!empty($isAdmin)){ ?>		
+		<?php if(!empty($isAdmin)){ ?>
 			<td><?=$spText['common']['User']?></td>
 		<?php } ?>
 		<td><?=$spText['common']['Url']?></td>
@@ -33,7 +33,7 @@
 		<td class="right"><?=$spText['common']['Action']?></td>
 	</tr>
 	<?php
-	$colCount = empty($isAdmin) ? 6 : 7; 
+	$colCount = empty($isAdmin) ? 6 : 7;
 	if(count($list) > 0){
 		$catCount = count($list);
 		foreach($list as $i => $listInfo){
@@ -49,7 +49,7 @@
 			?>
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>"><input type="checkbox" name="ids[]" value="<?=$listInfo['id']?>"></td>
-				<td class="td_br_right"><?=$listInfo['id']?></td>				
+				<td class="td_br_right"><?=$listInfo['id']?></td>
 				<td class="td_br_right left"><?=$websiteLink?></td>
 				<?php if(!empty($isAdmin)){ ?>
 					<td class="td_br_right left"><?=$listInfo['username']?></td>
@@ -64,7 +64,7 @@
 						}else{
 							$statVal = "Activate";
 							$statLabel = $spText['common']["Activate"];
-						} 
+						}
 					?>
 					<select name="action" id="action<?=$listInfo['id']?>" onchange="doAction('websites.php', 'content', 'websiteId=<?=$listInfo['id']?>&pageno=<?=$pageNo?>&userid=<?=$userId?>', 'action<?=$listInfo['id']?>')">
 						<option value="select">-- <?=$spText['common']['Select']?> --</option>
@@ -76,9 +76,9 @@
 			</tr>
 			<?php
 		}
-	}else{	 
-		echo showNoRecordsList($colCount-2);		
-	} 
+	}else{
+		echo showNoRecordsList($colCount-2);
+	}
 	?>
 	<tr class="listBot">
 		<td class="left" colspan="<?=($colCount-1)?>"></td>
@@ -92,7 +92,7 @@ if (SP_DEMO) {
     $actFun = "confirmSubmit('websites.php', 'listform', 'content', '&sec=activateall&pageno=$pageNo')";
     $inactFun = "confirmSubmit('websites.php', 'listform', 'content', '&sec=inactivateall&pageno=$pageNo')";
     $delFun = "confirmSubmit('websites.php', 'listform', 'content', '&sec=deleteall&pageno=$pageNo')";
-}   
+}
 ?>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="actionSec">
 	<tr>

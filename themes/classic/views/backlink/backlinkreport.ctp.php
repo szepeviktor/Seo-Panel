@@ -16,9 +16,9 @@
 		</td>
 		<th><?=$spText['common']['Period']?>:</th>
 		<td>
-			<input type="text" style="width: 80px;margin-right:0px;" value="<?=$fromTime?>" name="from_time"/> 
-			<img align="bottom" onclick="displayDatePicker('from_time', false, 'ymd', '-');" src="<?=SP_IMGPATH?>/cal.gif"/> 
-			<input type="text" style="width: 80px;margin-right:0px;" value="<?=$toTime?>" name="to_time"/> 
+			<input type="text" style="width: 80px;margin-right:0px;" value="<?=$fromTime?>" name="from_time"/>
+			<img align="bottom" onclick="displayDatePicker('from_time', false, 'ymd', '-');" src="<?=SP_IMGPATH?>/cal.gif"/>
+			<input type="text" style="width: 80px;margin-right:0px;" value="<?=$toTime?>" name="to_time"/>
 			<img align="bottom" onclick="displayDatePicker('to_time', false, 'ymd', '-');" src="<?=SP_IMGPATH?>/cal.gif"/>
 		</td>
 		<td colspan="2"><a href="javascript:void(0);" onclick="scriptDoLoadPost('backlinks.php', 'search_form', 'content', '&sec=reports')" class="actionbut"><?=$spText['button']['Show Records']?></a></td>
@@ -32,7 +32,7 @@
 		<p class='note error'><?=$spText['common']['No Records Found']?>!</p>
 		<?php
 		exit;
-	} 
+	}
 ?>
 
 <div id='subcontent'>
@@ -47,12 +47,12 @@
 		<td class="right">Bing</td>
 	</tr>
 	<?php
-	$colCount = 4; 
+	$colCount = 4;
 	if(count($list) > 0){
 		$catCount = count($list);
 		$i = 0;
 		foreach($list as $listInfo){
-			
+
 			$class = ($i % 2) ? "blue_row" : "white_row";
             if($catCount == ($i + 1)){
                 $leftBotClass = "tab_left_bot";
@@ -60,7 +60,7 @@
             }else{
                 $leftBotClass = "td_left_border td_br_right";
                 $rightBotClass = "td_br_right";
-            }            
+            }
 			?>
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>"><?php echo date('Y-m-d', $listInfo['result_time']); ?></td>
@@ -72,8 +72,8 @@
 			$i++;
 		}
 	}else{
-		echo showNoRecordsList($colCount-2);		
-	} 
+		echo showNoRecordsList($colCount-2);
+	}
 	?>
 	<tr class="listBot">
 		<td class="left" colspan="<?=($colCount-1)?>"></td>

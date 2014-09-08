@@ -1,4 +1,4 @@
-<?php 
+<?php
 $headLabel = empty($headLabel) ? $spTextPanel['System Settings'] : $headLabel;
 echo showSectionHead($headLabel);
 
@@ -21,25 +21,25 @@ if (!empty($errorMsg)) {
 		<td class="left" width='30%'><?=$headLabel?></td>
 		<td class="right">&nbsp;</td>
 	</tr>
-	<?php 
-	foreach( $list as $i => $listInfo){ 
+	<?php
+	foreach( $list as $i => $listInfo){
 		$class = ($i % 2) ? "blue_row" : "white_row";
 		switch($listInfo['set_type']){
-			
+
 			case "small":
 				$width = 40;
 				break;
 
 			case "bool":
 				if(empty($listInfo['set_val'])){
-					$selectYes = "";					
+					$selectYes = "";
 					$selectNo = "selected";
-				}else{					
-					$selectYes = "selected";					
+				}else{
+					$selectYes = "selected";
 					$selectNo = "";
 				}
 				break;
-				
+
 			case "medium":
 				$width = 200;
 				break;
@@ -65,7 +65,7 @@ if (!empty($errorMsg)) {
 								<?php
 								foreach ($langList as $langInfo) {
 									$selected = ($langInfo['lang_code'] == $listInfo['set_val']) ? "selected" : "";
-									?>			
+									?>
 									<option value="<?=$langInfo['lang_code']?>" <?=$selected?>><?=$langInfo['lang_name']?></option>
 									<?php
 								}
@@ -77,7 +77,7 @@ if (!empty($errorMsg)) {
 								$listInfo['set_val'] = empty($listInfo['set_val']) ? ini_get('date.timezone') : $listInfo['set_val'];
 								foreach ($timezoneList as $timezoneInfo) {
 									$selected = ($timezoneInfo['timezone_name'] == $listInfo['set_val']) ? "selected" : "";
-									?>			
+									?>
 									<option value="<?=$timezoneInfo['timezone_name']?>" <?=$selected?>><?=$timezoneInfo['timezone_label']?></option>
 									<?php
 								}
@@ -94,9 +94,9 @@ if (!empty($errorMsg)) {
 				<?php }?>
 			</td>
 		</tr>
-		<?php 
+		<?php
 	}
-	?>		
+	?>
 	<tr class="blue_row">
 		<td class="tab_left_bot_noborder"></td>
 		<td class="tab_right_bot"></td>

@@ -1,4 +1,4 @@
-<?php $langStyle = empty($langStyle) ? 150 : $langStyle; ?>  
+<?php $langStyle = empty($langStyle) ? 150 : $langStyle; ?>
 <select name="lang_code" id="lang_code" style="width:<?=$langStyle?>px;" onchange="<?=$onChange?>">
 	<?php if($langNull){ ?>
 		<option value="">-- all --</option>

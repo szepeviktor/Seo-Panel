@@ -22,15 +22,15 @@
 	<tr>
 		<th><?=$spText['common']['Period']?>:</th>
 		<td>
-			<input type="text" style="width: 80px;margin-right:0px;" value="<?=$fromTime?>" name="from_time"/> 
-			<img align="bottom" onclick="displayDatePicker('from_time', false, 'ymd', '-');" src="<?=SP_IMGPATH?>/cal.gif"/> 
-			<input type="text" style="width: 80px;margin-right:0px;" value="<?=$toTime?>" name="to_time"/> 
+			<input type="text" style="width: 80px;margin-right:0px;" value="<?=$fromTime?>" name="from_time"/>
+			<img align="bottom" onclick="displayDatePicker('from_time', false, 'ymd', '-');" src="<?=SP_IMGPATH?>/cal.gif"/>
+			<input type="text" style="width: 80px;margin-right:0px;" value="<?=$toTime?>" name="to_time"/>
 			<img align="bottom" onclick="displayDatePicker('to_time', false, 'ymd', '-');" src="<?=SP_IMGPATH?>/cal.gif"/>
-		</td>		
+		</td>
 		<th><?=$spText['common']['Search Engine']?>: </th>
 		<td>
-			<?php 
-				echo $this->render('searchengine/seselectbox', 'ajax'); 
+			<?php
+				echo $this->render('searchengine/seselectbox', 'ajax');
 			?>
 		</td>
 		<td colspan="2"><a href="javascript:void(0);" onclick="scriptDoLoadPost('graphical-reports.php', 'search_form', 'content')" class="actionbut"><?=$spText['button']['Show Records']?></a></td>
@@ -44,7 +44,7 @@
 		<p class='note error'><?=$spText['common']['No Keywords Found']?>!</p>
 		<?php
 		exit;
-	} 
+	}
 ?>
 
 <div id='subcontent'>

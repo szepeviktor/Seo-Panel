@@ -2,12 +2,12 @@
 <?php
 if(empty($projectId)) {
 	showErrorMsg($spTextSA['No active projects found'].'!');
-} 
+}
 $submitJsFunc = "scriptDoLoadPost('siteauditor.php', 'search_form', 'subcontent', '&sec=showreport')";
 ?>
 <form id='search_form' onsubmit="<?php echo $submitJsFunc; ?>; return false;">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="search">
-	<tr>				
+	<tr>
 		<th><?=$spText['label']['Project']?>: </th>
 		<td>
 			<select id="project_id" name="project_id" onchange="<?=$submitJsFunc?>" style="width: 180px;">
@@ -19,7 +19,7 @@ $submitJsFunc = "scriptDoLoadPost('siteauditor.php', 'search_form', 'subcontent'
 					<?php }?>
 				<?php }?>
 			</select>
-		</td>						
+		</td>
 		<th><?=$spText['label']['Report Type']?>: </th>
 		<td width="200px;">
 			<select name="report_type" id="report_type" onchange="<?=$submitJsFunc?>">
@@ -29,9 +29,9 @@ $submitJsFunc = "scriptDoLoadPost('siteauditor.php', 'search_form', 'subcontent'
 					<option value="<?=$type?>" <?=$selected?>><?=$label?></option>
 				<?php }?>
 			</select>
-		</td>						
+		</td>
 		<th><?=$spTextSA['Crawled']?>: </th>
-		<td>			
+		<td>
 			<select name="crawled" id="crawled" onchange="<?=$submitJsFunc?>">
 				<option value="-1">-- <?=$spText['common']['Select']?> --</option>
 				<option value="0"><?=$spText['common']['No']?></option>
@@ -39,11 +39,11 @@ $submitJsFunc = "scriptDoLoadPost('siteauditor.php', 'search_form', 'subcontent'
 			</select>
 		</td>
 	</tr>
-	<tr>						
+	<tr>
 		<th><?=$spTextSA['Page Link']?>: </th>
 		<td style="width: 50px;">
 			<input type="text" name="page_url" value="" onblur="<?=$submitJsFunc?>" style="width: 180px;">
-		</td>			
+		</td>
 		<th><?=$spText['common']['Google Pagerank']?>: </th>
 		<td>
 			<select name="google_pagerank" onchange="<?=$submitJsFunc?>">
@@ -51,7 +51,7 @@ $submitJsFunc = "scriptDoLoadPost('siteauditor.php', 'search_form', 'subcontent'
 				<?php for($i=0;$i<=10;$i++) {?>
 					<option value="<?=$i?>">PR<?=$i?></option>
 				<?php }?>
-			</select>			
+			</select>
 		</td>
 		<td colspan="2">
 			<a href="javascript:void(0);" onclick="<?=$submitJsFunc?>" class="actionbut"><?=$spText['button']['Show Records']?></a>

@@ -12,7 +12,7 @@
 </form>
 
 <?php
-	if(empty($websiteId)){ showErrorMsg($spText['common']['nowebsites'].'!');} 
+	if(empty($websiteId)){ showErrorMsg($spText['common']['nowebsites'].'!');}
 ?>
 
 <div id='subcontent'>
@@ -28,12 +28,12 @@
 		<td class="right"><?=$spText['common']['Action']?></td>
 	</tr>
 	<?php
-	$colCount = 4; 
+	$colCount = 4;
 	if(count($list) > 0){
 		$catCount = count($list);
 		$i = 0;
 		foreach($list as $listInfo){
-			
+
 			$class = ($i % 2) ? "blue_row" : "white_row";
             if($catCount == ($i + 1)){
                 $leftBotClass = "tab_left_bot";
@@ -41,9 +41,9 @@
             }else{
                 $leftBotClass = "td_left_border td_br_right";
                 $rightBotClass = "td_br_right";
-            }            
+            }
             $includeLink = "<a href='javascript:void(0);' onclick=\"scriptDoLoad('directories.php', 'content', 'sec=unskip&id={$listInfo['id']}&pageno=$pageNo&website_id=$websiteId')\">".$spTextDir['Add back to directory list']."</a>";
-            
+
 			?>
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>"><?=$listInfo['id']?></td>
@@ -55,8 +55,8 @@
 			$i++;
 		}
 	}else{
-		echo showNoRecordsList($colCount-2);		
-	} 
+		echo showNoRecordsList($colCount-2);
+	}
 	?>
 	<tr class="listBot">
 		<td class="left" colspan="<?=($colCount-1)?>"></td>

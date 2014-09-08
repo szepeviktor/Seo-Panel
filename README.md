@@ -5,6 +5,12 @@ Seo-Panel
 
 This is the unoffical up-to-date mirror site of Seo Panel by [Geo Varghese](http://www.seopanel.in/)
 
+```bash
+find -not -path '*/.*' -type f \( -path "*.php" -o -path "*.js" -o -path "*.css" \) -exec dos2unix \{\} \;
+find -not -path '*/.*' -type f \( -path "*.php" -o -path "*.js" -o -path "*.css" \) -exec sed -i 's/[ \t]*$//' \{\} \;
+```
+
+
 - - -
 
 ## Seo Control Panel - Seo Panel Version 3.6.0
@@ -24,7 +30,7 @@ This is the unoffical up-to-date mirror site of Seo Panel by [Geo Varghese](http
 4. Change the permissions on the "tmp" directory to be writable by all (777 or -rwxrwxrwx within your FTP Client)
 5. Using your web browser visit the location you placed Seo Panel with the addition of "install/index.php" or pointing directly to "install/", e.g. http://www.yourdomain.com/seopanel/install/
 6. Follow the steps and fill out all the requested information.
-7. Change the permissions on "config/sp-config.php" to be writable only by yourself (644 or -rw-r--r-- within your FTP Client)   
+7. Change the permissions on "config/sp-config.php" to be writable only by yourself (644 or -rw-r--r-- within your FTP Client)
 8. Please use following login details to access Admin Interface.
 
     Admin Section:
@@ -38,7 +44,7 @@ This is the unoffical up-to-date mirror site of Seo Panel by [Geo Varghese](http
 
 Installation Reference Link: http://www.seopanel.in/install/
 
-If you have any issues while installation, Please use following resources to fix it or contact seo panel team. 
+If you have any issues while installation, Please use following resources to fix it or contact seo panel team.
 
 
 ### Online Seo Panel Resources:

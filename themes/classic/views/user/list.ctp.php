@@ -12,7 +12,7 @@
 		<td class="right"><?=$spText['common']['Action']?></td>
 	</tr>
 	<?php
-	$colCount = 7; 
+	$colCount = 7;
 	if(count($userList) > 0){
 		$catCount = count($userList);
 		foreach($userList as $i => $userInfo){
@@ -26,7 +26,7 @@
             }
             $usernameLink = scriptAJAXLinkHref('users.php', 'content', "sec=edit&userId={$userInfo['id']}", "{$userInfo['username']}")
 			?>
-			<tr class="<?=$class?>">				
+			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>"><input type="checkbox" name="ids[]" value="<?=$userInfo['id']?>"></td>
 				<td class="td_br_right"><?=$userInfo['id']?></td>
 				<td class="td_br_right left"><?=$usernameLink?></td>
@@ -41,7 +41,7 @@
 						}else{
 							$statVal = "Activate";
 							$statLabel = $spText['common']["Activate"];
-						} 
+						}
 					?>
 					<select name="action" id="action<?=$userInfo['id']?>" onchange="doAction('users.php', 'content', 'userId=<?=$userInfo['id']?>&pageno=<?=$pageNo?>', 'action<?=$userInfo['id']?>')">
 						<option value="select">-- <?=$spText['common']['Select']?> --</option>
@@ -53,9 +53,9 @@
 			</tr>
 			<?php
 		}
-	}else{	 
-		echo showNoRecordsList($colCount-2);		
-	} 
+	}else{
+		echo showNoRecordsList($colCount-2);
+	}
 	?>
 	<tr class="listBot">
 		<td class="left" colspan="<?=($colCount-1)?>"></td>
@@ -69,7 +69,7 @@ if (SP_DEMO) {
     $actFun = "confirmSubmit('users.php', 'listform', 'content', '&sec=activateall&pageno=$pageNo')";
     $inactFun = "confirmSubmit('users.php', 'listform', 'content', '&sec=inactivateall&pageno=$pageNo')";
     $delFun = "confirmSubmit('users.php', 'listform', 'content', '&sec=deleteall&pageno=$pageNo')";
-}   
+}
 ?>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="actionSec">
 	<tr>

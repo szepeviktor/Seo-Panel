@@ -5,7 +5,7 @@
 	<tr class="listHead">
 		<td class="left" width='30%'><?=$spTextPanel['New Project']?></td>
 		<td class="right">&nbsp;</td>
-	</tr>		
+	</tr>
 	<tr class="white_row">
 		<td class="td_left_col"><?=$spText['common']['Website']?>:*</td>
 		<td class="td_right_col">
@@ -98,7 +98,7 @@
 				<option value="1" <?=$selected?>><?=$spText['common']['Yes']?></option>
 			</select>
 		</td>
-	</tr>		
+	</tr>
 	<tr class="blue_row">
 		<td class="tab_left_bot_noborder"></td>
 		<td class="tab_right_bot"></td>

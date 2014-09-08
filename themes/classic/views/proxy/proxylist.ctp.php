@@ -1,6 +1,6 @@
-<?php 
+<?php
 echo showSectionHead($spTextPanel["Proxy Manager"]);
-$searchFun = "scriptDoLoadPost('proxy.php', 'listform', 'content')"; 
+$searchFun = "scriptDoLoadPost('proxy.php', 'listform', 'content')";
 ?>
 <form name="listform" id="listform" onsubmit="<?=$searchFun?>">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="search">
@@ -11,7 +11,7 @@ $searchFun = "scriptDoLoadPost('proxy.php', 'listform', 'content')";
 		<td>
 			<select name="status" onchange="<?=$searchFun?>">
 				<option value="">-- <?=$spText['common']['Select']?> --</option>
-				<?php				
+				<?php
 				$inactCheck = $actCheck = "";
 				if ($statVal == 'active') {
 				    $actCheck = "selected";
@@ -32,7 +32,7 @@ $searchFun = "scriptDoLoadPost('proxy.php', 'listform', 'content')";
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">
 		<td class="leftid"><input type="checkbox" id="checkall" onclick="checkList('checkall')"></td>
-		<td><?=$spText['common']['Id']?></td>		
+		<td><?=$spText['common']['Id']?></td>
 		<td><?=$spText['label']['Proxy']?></td>
 		<td><?=$spText['label']['Port']?></td>
 		<td><?=$spText['label']['Authentication']?></td>
@@ -40,7 +40,7 @@ $searchFun = "scriptDoLoadPost('proxy.php', 'listform', 'content')";
 		<td class="right"><?=$spText['common']['Action']?></td>
 	</tr>
 	<?php
-	$colCount = 7; 
+	$colCount = 7;
 	if(count($list) > 0){
 		$catCount = count($list);
 		foreach($list as $i => $listInfo){
@@ -67,10 +67,10 @@ $searchFun = "scriptDoLoadPost('proxy.php', 'listform', 'content')";
 							$statLabel = $spText['common']["Inactivate"];
 						}else{
 							$statLabel = $spText['common']["Activate"];
-						} 
+						}
 					?>
 					<select name="action" id="action<?=$listInfo['id']?>" onchange="doAction('proxy.php', 'content', 'proxyId=<?=$listInfo['id']?>&pageno=<?=$pageNo?><?=$urlParams?>', 'action<?=$listInfo['id']?>')">
-						<option value="select">-- <?=$spText['common']['Select']?> --</option>						
+						<option value="select">-- <?=$spText['common']['Select']?> --</option>
 						<option value="checkstatus"><?=$spText['button']['Check Status']?></option>
 						<option value="<?=$statLabel?>"><?=$statLabel?></option>
 						<option value="edit"><?=$spText['common']['Edit']?></option>
@@ -80,9 +80,9 @@ $searchFun = "scriptDoLoadPost('proxy.php', 'listform', 'content')";
 			</tr>
 			<?php
 		}
-	}else{	 
-		echo showNoRecordsList($colCount-2);		
-	} 
+	}else{
+		echo showNoRecordsList($colCount-2);
+	}
 	?>
 	<tr class="listBot">
 		<td class="left" colspan="<?=($colCount-1)?>"></td>
@@ -97,7 +97,7 @@ if (SP_DEMO) {
     $inactFun = "confirmSubmit('proxy.php', 'listform', 'content', '&sec=inactivateall&pageno=$pageNo')";
     $delFun = "confirmSubmit('proxy.php', 'listform', 'content', '&sec=deleteall&pageno=$pageNo')";
     $checkFun = "confirmSubmit('proxy.php', 'listform', 'content', '&sec=checkall&pageno=$pageNo')";
-}   
+}
 ?>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="actionSec">
 	<tr>

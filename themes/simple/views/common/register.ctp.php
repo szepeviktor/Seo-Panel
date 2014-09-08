@@ -44,7 +44,7 @@
                         	    <input type="text" name="code" value="<?=$post['code']?>"><?=$errMsg['code']?>
                             </div>
                         </td>
-                    </tr>    	
+                    </tr>
                 	<tr>
                 		<td>&nbsp;</td>
                 		<td colspan="0" class="actionsBox">

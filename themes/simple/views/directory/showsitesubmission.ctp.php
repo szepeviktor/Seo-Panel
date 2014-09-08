@@ -11,14 +11,14 @@
 		<td class="td_right_col">
 			<input type="text" name="owner_name" value="<?=stripslashes($websiteInfo['owner_name'])?>" style="width:300px;"><?=$errMsg['owner_name']?>
 		</td>
-	</tr>	
+	</tr>
 	<tr class="blue_row">
 		<td class="td_left_col"><?=$spTextDir['Owner Email']?>:</td>
 		<td class="td_right_col">
-			<input type="text" name="owner_email" value="<?=$websiteInfo['owner_email']?>" style="width:300px;"><?=$errMsg['owner_email']?>			
+			<input type="text" name="owner_email" value="<?=$websiteInfo['owner_email']?>" style="width:300px;"><?=$errMsg['owner_email']?>
 			<p><?=$spTextDir['spamemailnote']?></p>
 		</td>
-	</tr>		
+	</tr>
 	<tr class="white_row">
 		<td class="td_left_col"><?=$spTextDir['Website Category']?>:</td>
 		<td class="td_right_col">
@@ -54,12 +54,12 @@
 	<tr class="blue_row">
 		<td class="td_left_col"><?=$spTextDir['Reciprocal Link']?>:</td>
 		<td class="td_right_col"><input type="text" name="reciprocal_url" value="<?=stripslashes($websiteInfo['reciprocal_url'])?>" style="width:400px;"></td>
-	</tr>	
+	</tr>
 	<tr class="white_row" style="border-right: none;">
 		<td class="td_left_col">&nbsp;</td>
 		<td class="td_right_col"><b><?=$spTextDir['optionalnote']?></b></td>
 	</tr>
-	<?php for($i=2;$i<=$noTitles;$i++){?>	
+	<?php for($i=2;$i<=$noTitles;$i++){?>
 		<tr class="blue_row">
 			<td class="td_left_col"><?=$spTextDir['Submit Title']?><?=$i?>:</td>
 			<td class="td_right_col"><input type="text" name="title<?=$i?>" value="<?=stripslashes($websiteInfo['title'.$i])?>" style="width:400px;"></td>
@@ -70,7 +70,7 @@
 				<textarea name="description<?=$i?>"><?=stripslashes($websiteInfo['description'.$i])?></textarea>
 			</td>
 		</tr>
-	<?php }?>		
+	<?php }?>
 	<tr class="blue_row">
 		<td class="tab_left_bot_noborder"></td>
 		<td class="tab_right_bot"></td>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 echo showSectionHead($spTextPanel['Schedule Reports']);
 
 // if saved successfully
@@ -14,7 +14,7 @@ if (!empty($success)) {
 		<td class="left" width='30%'><?=$spTextPanel['Schedule Reports']?></td>
 		<td class="right">&nbsp;</td>
 	</tr>
-	<?php if(isAdmin()){ ?>	
+	<?php if(isAdmin()){ ?>
 		<tr class="blue_row">
 			<td class="td_left_col"><?=$spText['common']['User']?>:</td>
 			<td class="td_right_col">
@@ -24,17 +24,17 @@ if (!empty($success)) {
 							<option value="<?=$userInfo['id']?>" selected><?=$userInfo['username']?></option>
 						<?php }else{?>
 							<option value="<?=$userInfo['id']?>"><?=$userInfo['username']?></option>
-						<?php }?>						
+						<?php }?>
 					<?php }?>
 				</select>
 			</td>
 		</tr>
-	<?php }?>	
+	<?php }?>
 	<tr class="white_row">
 		<td  class="td_left_col"><?=$spTextReport['Next report generation time']?>:</td>
 		<td class="td_right_col"><?=$nextReportTime?></td>
 	</tr>
-	<tr class="blue_row">				
+	<tr class="blue_row">
 		<td class="td_left_col"><?=$spTextReport['Reports generation interval']?>: </td>
 		<td class="td_right_col">
 			<select name="report_interval">
@@ -52,7 +52,7 @@ if (!empty($success)) {
     	<tr class="white_row">
     		<td class="td_left_col"><?=$spTextReport['Email notification']?>:</td>
     		<td class="td_right_col">
-    			<?php 
+    			<?php
     			$selected = $repSetInfo['email_notification'] ? 'selected' : '';
     			?>
     			<select name="email_notification">
@@ -61,7 +61,7 @@ if (!empty($success)) {
     			</select>
     		</td>
     	</tr>
-	<?php }?>		
+	<?php }?>
 	<tr class="blue_row">
 		<td class="tab_left_bot_noborder"></td>
 		<td class="tab_right_bot"></td>
@@ -77,7 +77,7 @@ if (!empty($success)) {
     		<a onclick="scriptDoLoad('reports.php?sec=schedule', 'content')" href="javascript:void(0);" class="actionbut">
          		<?=$spText['button']['Cancel']?>
          	</a> &nbsp;
-         	<?php $actFun = SP_DEMO ? "alertDemoMsg()" : "confirmSubmit('reports.php', 'schedule_form', 'content')"; ?>         		
+         	<?php $actFun = SP_DEMO ? "alertDemoMsg()" : "confirmSubmit('reports.php', 'schedule_form', 'content')"; ?>
          	<a onclick="<?=$actFun?>" href="javascript:void(0);" class="actionbut">
          		<?=$spText['button']['Proceed']?>
          	</a>
