@@ -5,7 +5,7 @@ Seo-Panel
 
 This is the unoffical up-to-date mirror site of Seo Panel by [Geo Varghese](http://www.seopanel.in/)
 
-#### ZIP MD5 sums
+#### Original ZIP MD5 sums
 
 | release | MD5                              |
 | ------- | -------------------------------- |
