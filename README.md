@@ -5,10 +5,21 @@ Seo-Panel
 
 This is the unoffical up-to-date mirror site of Seo Panel by [Geo Varghese](http://www.seopanel.in/)
 
+#### ZIP MD5 sums
+
+| release | MD5                              |
+| ------- | -------------------------------- |
+| 3.6     | 84f0500df7399dc4d66dddabed7da382 |
+
+
+LF line endings and trimming trailing spaces.
+
 ```bash
 find -not -path '*/.*' -type f \( -path "*.php" -o -path "*.js" -o -path "*.css" \) -exec dos2unix \{\} \;
 find -not -path '*/.*' -type f \( -path "*.php" -o -path "*.js" -o -path "*.css" \) -exec sed -i 's/[ \t]*$//' \{\} \;
 ```
+
+##### How to install/update?
 
 ```bash
 #git clone https://github.com/szepeviktor/Seo-Panel.git
