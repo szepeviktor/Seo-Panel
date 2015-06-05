@@ -21,26 +21,26 @@
  ***************************************************************************/
 
 class Install {
-
+	
 	# func to check requirements
-	function checkRequirements($error=false) {
-
+	function checkRequirements($error=false) {		
+		
 		$phpClass = "red";
 		$phpSupport = "No";
-		$phpVersion = phpversion();
-		if(intval($phpVersion) >= 4){
+		$phpVersion = phpversion();		
+		if(intval($phpVersion) >= 4){			
 			$phpClass = "green";
 			$phpSupport = "Yes";
 		}
 		$phpSupport .= " ( PHP $phpVersion )";
-
+		
 		$mysqlClass = "red";
 		$mysqlSupport = "No";
 		if(function_exists('mysql_query')){
 			$mysqlSupport = "Yes";
 			$mysqlClass = "green";
 		}
-
+		
 		$curlClass = "red";
 		$curlSupport = "No";
 		if(function_exists('curl_version')){
@@ -48,14 +48,14 @@ class Install {
 			$curlSupport = "Yes ( CURL  {$version['version']} )";
 			$curlClass = "green";
 		}
-
-		$shorttagClass = "red";
+		
+		/*$shorttagClass = "red";
 		$shorttagSupport = "Disabled";
 		if(ini_get('short_open_tag')){
 			$shorttagSupport = "Enabled";
 			$shorttagClass = "green";
-		}
-
+		}*/
+		
 		$gdClass = "red";
 		$gdSupport = "No";
 		if(function_exists('gd_info')){
@@ -63,43 +63,43 @@ class Install {
 			$gdSupport = "Yes ( GD  {$version['GD Version']} )";
 			$gdClass = "green";
 		}
-
+		
 		$configClass = "red";
 		$configSupport = "Not found";
 		$configFile = SP_INSTALL_CONFIG_FILE;
 		if(file_exists($configFile)){
-
+			
 			include_once(SP_INSTALL_CONFIG_FILE);
 			if(defined('SP_INSTALLED')){
 				die("<p style='color:red'>Seo Panel version ".SP_INSTALLED." is already installed in your system!</p>");
 			}
-
+			
 			$configSupport = "Found, Unwritable<br><p class='note'><b>Command:</b> chmod 666 config/sp-config.php</p>";
-			if(is_writable($configFile)){
-				$configSupport = "Found, Writable";
+			if(is_writable($configFile)){				
+				$configSupport = "Found, Writable";				
 				$configClass = "green";
-			}
+			}			
 		}
-
-
+		
+	
 		$tmpClass = "red";
 		$tmpSupport = "Not found";
 		$tmpFile = SP_INSTALL_DIR.'/../tmp';
 		if(file_exists($tmpFile)){
 			$tmpSupport = "Found, Unwritable<br><p class='note'><b>Command:</b> chmod -R 777 tmp/</p>";
-			if(is_writable($tmpFile)){
-				$tmpSupport = "Found, Writable";
+			if(is_writable($tmpFile)){				
+				$tmpSupport = "Found, Writable";				
 				$tmpClass = "green";
-			}
+			}			
 		}
-
+		
 		$errMsg = "";
 		if($error){
 			if( ($phpClass == 'red') || ($mysqlClass == 'red') || ($curlClass == 'red') || ($shorttagClass == 'red') || ($configClass == 'red') ){
 				$errMsg = "Please fix the following errors to proceed to next step!";
 			}
 		}
-
+		
 		?>
 		<h1 class="BlockHeader">Welcome to Seo panel Installation</h1>
 		<form method="post">
@@ -118,10 +118,12 @@ class Install {
 				<th>CURL Support</th>
 				<td class="<?php echo $curlClass;?>"><?php echo $curlSupport; ?></td>
 			</tr>
+			<?php /* ?>
 			<tr>
 				<th>PHP short_open_tag</th>
 				<td class="<?php echo $shorttagClass;?>"><?php echo $shorttagSupport; ?></td>
 			</tr>
+			<?php */ ?>
 			<tr>
 				<th>GD graphics support</th>
 				<td class="<?php echo $gdClass;?>"><?php echo $gdSupport; ?></td>
@@ -138,17 +140,18 @@ class Install {
 		<input type="hidden" value="<?php echo $phpClass;?>" name="php_support">
 		<input type="hidden" value="<?php echo $mysqlClass;?>" name="mysql_support">
 		<input type="hidden" value="<?php echo $curlClass;?>" name="curl_support">
-		<input type="hidden" value="<?php echo $shorttagClass;?>" name="short_open_tag">
+		<?php /* ?><input type="hidden" value="<?php echo $shorttagClass;?>" name="short_open_tag"><?php */ ?>
 		<input type="hidden" value="<?php echo $configClass;?>" name="config">
 		<input type="hidden" value="startinstall" name="sec">
 		<input type="submit" value="Proceed to next step >>" name="submit" class="button">
 		</form>
 		<?php
 	}
-
+	
 	# func to start installation
 	function startInstallation($info='', $errMsg='') {
-		if( ($info['php_support'] == 'red') || ($info['mysql_support'] == 'red') || ($info['curl_support'] == 'red') || ($info['short_open_tag'] == 'red') || ($info['config'] == 'red') ){
+		if( ($info['php_support'] == 'red') || ($info['mysql_support'] == 'red') || ($info['curl_support'] == 'red')
+		|| ($info['config'] == 'red') ){
 			$this->checkRequirements(true);
 			return;
 		}
@@ -186,43 +189,43 @@ class Install {
 				<th>Admin email address:</th>
 				<td><input type="text" name="email" value="<?php echo $info['email'];?>"></td>
 			</tr>
-		</table>
-		<input type="hidden" value="proceedinstall" name="sec">
+		</table>		
+		<input type="hidden" value="proceedinstall" name="sec">		
 		<input type="submit" value="Proceed to next step >>" name="submit" class="button">
 		</form>
-		<?php
+		<?php		
 	}
-
+	
 	# func to write to config file
 	function writeConfigFile($info) {
-
+		
 		$handle = fopen(SP_INSTALL_CONFIG_SAMPLE, "r");
 		$cfgData = fread($handle, filesize(SP_INSTALL_CONFIG_SAMPLE));
 		fclose($handle);
-
-
+		
+		
 		$search = array('[SP_WEBPATH]', '[DB_NAME]', '[DB_USER]', '[DB_PASSWORD]', '[DB_HOST]', '[DB_ENGINE]');
 		$replace = array($info['web_path'], $info['db_name'], $info['db_user'], $info['db_pass'], $info['db_host'], $info['db_engine'] );
 		$cfgData = str_replace($search, $replace, $cfgData);
-
+		
 		$handle = fopen(SP_INSTALL_CONFIG_FILE, "w");
 		fwrite($handle, $cfgData);
 		fclose($handle);
 	}
-
+	
 	function getWebPath(){
-
+	    
 	    // to fix the issue with IIS
 	    if (!isset($_SERVER['REQUEST_URI'])) {
             $_SERVER['REQUEST_URI'] = substr($_SERVER['PHP_SELF'], 1 );
             if (isset($_SERVER['QUERY_STRING'])) {
                 $_SERVER['REQUEST_URI'].='?'.$_SERVER['QUERY_STRING'];
             }
-        }
-
+        }	    
+	    
 		$reqUrl = $_SERVER['REQUEST_URI'];
 		$count = 0;
-		$reqUrl = preg_replace('/\/install\/$/i', '', $reqUrl, 1, $count);
+		$reqUrl = preg_replace('/\/install\/$/i', '', $reqUrl, 1, $count);		
 		if(empty($count)){
 			$reqUrl = preg_replace('/\/install\/index.php$/i', '', $reqUrl, 1, $count);
 			if(empty($count)){
@@ -239,24 +242,24 @@ class Install {
 		$webPath = $protocol.$host.$reqUrl;
 		return $webPath;
 	}
-
+	
 	# func to proceed installation
 	function proceedInstallation($info) {
 		$db = New DB();
-
+		
 		# checking db settings
 		$errMsg = $db->connectDatabase($info['db_host'], $info['db_user'], $info['db_pass'], $info['db_name']);
 		if($db->error ){
 			$this->startInstallation($info, $errMsg);
 			return;
 		}
-
+		
 		# checking config file settings
 		if(!is_writable(SP_INSTALL_CONFIG_FILE)){
 			$this->checkRequirements(true);
 			return;
-		}
-
+		}	
+		
 		# checking seo panel web path
 		$info['web_path'] = $this->getWebPath();
 		if(empty($info['web_path'])){
@@ -272,7 +275,7 @@ class Install {
 			$this->startInstallation($info, $errMsg);
 			return;
 		}
-
+		
 		# importing text file
 		$errMsg = $db->importDatabaseFile(SP_INSTALL_DB_LANG_FILE);
 		if($db->error ){
@@ -280,13 +283,13 @@ class Install {
 			$this->startInstallation($info, $errMsg);
 			return;
 		}
-
+		
 		# write to config file
 		$this->writeConfigFile($info);
-
+		
 		# create API Key if not exists
-		$this->createSeoPanelAPIKey($db);
-
+		$this->createSeoPanelAPIKey($db);		
+		
 		if(gethostbynamel('seopanel.in')){
 			include_once SP_INSTALL_DIR.'/../libs/spider.class.php';
 			include_once(SP_INSTALL_CONFIG_FILE);
@@ -295,14 +298,14 @@ class Install {
 			$spider = New Spider();
 			$spider->getContent($installUpdateUrl, false, false);
 		}
-
+		
 		$db = New DB();
 		$db->connectDatabase($info['db_host'], $info['db_user'], $info['db_pass'], $info['db_name']);
-
+		
 		// update email for admin
 		$sql = "update users set email='".addslashes($info['email'])."' where id=1";
 		$db->query($sql);
-
+		
 		// select languages list
 		$sql = "select * from languages where translated=1";
 		$langList = $db->select($sql);
@@ -310,7 +313,7 @@ class Install {
 		// select timezones
 		$sql = "select * from timezone order by id";
 		$timezoneList = $db->select($sql);
-		?>
+		?>		
 		<form method="post" action="<?php echo $info['web_path']."/login.php"; ?>">
 		<h1 class="BlockHeader">Seo Panel Installation Success</h1>
 		<table width="100%" cellspacing="8px" cellpadding="0px" class="formtab">
@@ -336,8 +339,8 @@ class Install {
             			<?php
             			foreach ($langList as $langInfo) {
             				$selected = ($langInfo['lang_code'] == 'en') ? "selected" : "";
-            				?>
-            				<option value="<?=$langInfo['lang_code']?>" <?=$selected?>><?=$langInfo['lang_name']?></option>
+            				?>			
+            				<option value="<?php echo $langInfo['lang_code']?>" <?php echo $selected?>><?php echo $langInfo['lang_name']?></option>
             				<?php
             			}
             			?>
@@ -353,7 +356,7 @@ class Install {
             			foreach ($timezoneList as $timezoneInfo) {
             				$selected = ($timezoneInfo['timezone_name'] == $listInfo['set_val']) ? 'selected="selected"' : "";
             				?>
-            				<option value="<?=$timezoneInfo['timezone_name']?>" <?=$selected?> ><?=$timezoneInfo['timezone_label']?></option>
+            				<option value="<?php echo $timezoneInfo['timezone_name']?>" <?php echo $selected?> ><?php echo $timezoneInfo['timezone_label']?></option>
             				<?php
             			}
             			?>
@@ -373,29 +376,29 @@ class Install {
 		<input type="hidden" name="password" value="spadmin">
 		<input type="submit" value="Proceed to admin login >>" name="submit" class="button">
 		</form>
-		<?php
+		<?php		
 	}
-
-
+	
+	
 	# func to check upgrade requirements
 	function checkUpgradeRequirements($error=false, $errorMsg='') {
 
 		$phpClass = "red";
 		$phpSupport = "No";
 		$phpVersion = phpversion();
-		if(intval($phpVersion) >= 4){
+		if(intval($phpVersion) >= 4){			
 			$phpClass = "green";
 			$phpSupport = "Yes";
 		}
 		$phpSupport .= " ( PHP $phpVersion )";
-
+		
 		$mysqlClass = "red";
 		$mysqlSupport = "No";
 		if(function_exists('mysql_query')){
 			$mysqlSupport = "Yes";
 			$mysqlClass = "green";
 		}
-
+		
 		$curlClass = "red";
 		$curlSupport = "No";
 		if(function_exists('curl_version')){
@@ -403,38 +406,39 @@ class Install {
 			$curlSupport = "Yes ( CURL  {$version['version']} )";
 			$curlClass = "green";
 		}
-
+		
+		/*
 		$shorttagClass = "red";
 		$shorttagSupport = "Disabled";
 		if(ini_get('short_open_tag')){
 			$shorttagSupport = "Enabled";
 			$shorttagClass = "green";
-		}
-
+		}*/
+		
 		$gdClass = "red";
 		$gdSupport = "No";
 		if(function_exists('gd_info')){
 			$version = gd_info();
 			$gdSupport = "Yes ( GD  {$version['GD Version']} )";
 			$gdClass = "green";
-		}
-
+		}		
+			
 		$tmpClass = "red";
 		$tmpSupport = "Not found";
 		$tmpFile = SP_INSTALL_DIR.'/../tmp';
 		if(file_exists($tmpFile)){
 			$tmpSupport = "Found, Unwritable<br><p class='note'><b>Command:</b> chmod -R 777 tmp/</p>";
-			if(is_writable($tmpFile)){
-				$tmpSupport = "Found, Writable";
+			if(is_writable($tmpFile)){				
+				$tmpSupport = "Found, Writable";				
 				$tmpClass = "green";
-			}
+			}			
 		}
-
+		
 		$configClass = "red";
 		$configSupport = "Not found";
 		$configFile = SP_INSTALL_CONFIG_FILE;
 		if(file_exists($configFile)){
-			$configSupport = "Found";
+			$configSupport = "Found";				
 			$configClass = "green";
 		}
 
@@ -443,27 +447,28 @@ class Install {
 		include_once(SP_INSTALL_CONFIG_FILE);
 		if(defined('DB_HOST') && defined('DB_NAME') && defined('DB_USER') && defined('DB_PASSWORD') && defined('DB_ENGINE')){
 			$db = New DB();
-
+			
 			$errMsg = $db->connectDatabase(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 			if($db->error ){
 				$dbSupport = $errMsg;
-			}else{
-				$dbSupport = "Connected to database successfully";
+			}else{				
+				$dbSupport = "Connected to database successfully";				
 				$dbClass = "green";
 			}
-		}
-
+		}		
+		
 		$errMsg = "";
 		if($error){
 			if(empty($errorMsg)){
-				if( ($phpClass == 'red') || ($mysqlClass == 'red') || ($curlClass == 'red') || ($shorttagClass == 'red') || ($configClass == 'red') || ($dbClass == 'red') ){
+				if( ($phpClass == 'red') || ($mysqlClass == 'red') || ($curlClass == 'red') 
+				|| ($configClass == 'red') || ($dbClass == 'red') ){
 					$errMsg = "Please fix the following errors to proceed to next step!";
 				}
 			}else{
 				$errMsg = $errorMsg;
 			}
 		}
-
+		
 		?>
 		<h1 class="BlockHeader">Welcome to Seo panel Upgrade</h1>
 		<form method="post">
@@ -482,10 +487,12 @@ class Install {
 				<th>CURL Support</th>
 				<td class="<?php echo $curlClass;?>"><?php echo $curlSupport; ?></td>
 			</tr>
+			<?php /*?>
 			<tr>
 				<th>PHP short_open_tag</th>
 				<td class="<?php echo $shorttagClass;?>"><?php echo $shorttagSupport; ?></td>
 			</tr>
+			<?php */ ?>
 			<tr>
 				<th>GD graphics support</th>
 				<td class="<?php echo $gdClass;?>"><?php echo $gdSupport; ?></td>
@@ -506,32 +513,33 @@ class Install {
 		<input type="hidden" value="<?php echo $phpClass;?>" name="php_support">
 		<input type="hidden" value="<?php echo $mysqlClass;?>" name="mysql_support">
 		<input type="hidden" value="<?php echo $curlClass;?>" name="curl_support">
-		<input type="hidden" value="<?php echo $shorttagClass;?>" name="short_open_tag">
+		<?php /* ?><input type="hidden" value="<?php echo $shorttagClass;?>" name="short_open_tag"><?php */ ?>
 		<input type="hidden" value="<?php echo $configClass;?>" name="config">
 		<input type="hidden" value="<?php echo $dbClass;?>" name="db_support">
 		<input type="hidden" value="proceedupgrade" name="sec">
 		<?php $submitLabel = defined('SP_INSTALLED') ? "Upgrade to Seo Panel v.".SP_INSTALLED : "Upgrade Seo Panel"; ?>
-		<input type="submit" value="<?=$submitLabel?> >>" name="submit" class="button">
+		<input type="submit" value="<?php echo $submitLabel?> >>" name="submit" class="button">
 		</form>
 		<?php
 	}
-
-	function proceedUpgrade($info=''){
-		if( ($info['php_support'] == 'red') || ($info['mysql_support'] == 'red') || ($info['curl_support'] == 'red') || ($info['short_open_tag'] == 'red') || ($info['config'] == 'red') || ($info['db_support'] == 'red')){
+	
+	function proceedUpgrade($info=''){ 
+		if( ($info['php_support'] == 'red') || ($info['mysql_support'] == 'red') || ($info['curl_support'] == 'red')
+		|| ($info['config'] == 'red') || ($info['db_support'] == 'red')){
 			$this->checkUpgradeRequirements(true);
 			return;
-		}
-
+		}		
+		
 		include_once(SP_INSTALL_CONFIG_FILE);
 		$db = New DB();
-
+		
 		# check database connection
 		$errMsg = $db->connectDatabase(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 		if($db->error){
 			$this->checkUpgradeRequirements(true, $errMsg);
 			return;
 		}
-
+		
 		# importing data to db
 		$errMsg = $db->importDatabaseFile(SP_UPGRADE_DB_FILE, false);
 		/*if($db->error){
@@ -543,13 +551,13 @@ class Install {
 		# importing text file
 		$errMsg = $db->importDatabaseFile(SP_UPGRADE_DB_LANG_FILE, false);
 		$_SESSION['text'] = "";
-
+		
 		# create API Key if not exists
 		$this->createSeoPanelAPIKey($db);
-
+		
 		?>
 		<form method="post" action="<?php echo SP_WEBPATH."/login.php"; ?>">
-		<h1 class="BlockHeader">Suuccess Seo Panel v.<?php echo SP_INSTALLED;?> Upgrade</h1>
+		<h1 class="BlockHeader">Success Seo Panel v.<?php echo SP_INSTALLED;?> Upgrade</h1>
 		<table width="100%" cellspacing="8px" cellpadding="0px" class="formtab">
 			<tr><th colspan="2" class="headersuccess">Seo Panel upgraded successfully!</th></tr>
 			<tr>
@@ -562,13 +570,13 @@ class Install {
 					</ul>
 				</td>
 			</tr>
-		</table>
+		</table>				
 		<input type="submit" value="Proceed to admin login >>" name="submit" class="button">
 		</form>
 		<?php
 	}
-
-
+	
+	
 	# func to show default install header
 	function showDefaultHeader() {
 		?>
@@ -578,22 +586,22 @@ class Install {
 				<link rel="shortcut icon" href="../images/favicon.ico" />
 				<title>Seo Panel installation interface</title>
 				<meta name="description" content="Seo Panel installation Steps to install seo control panel for managing seo of your sites.">
-				<link rel="stylesheet" type="text/css" href="install.css" media="all" />
+				<link rel="stylesheet" type="text/css" href="install.css" media="all" />				
 			</head>
 			<body>
 				<div class="installdiv">
-		<?php
+		<?php		
 	}
-
+	
 	# func to show default install footer
 	function showDefaultFooter($content='') {
 		?>
 				</div>
 			</body>
 		</html>
-		<?php
+		<?php		
 	}
-
+	
 	# function to create seo panel API Key
 	function createSeoPanelAPIKey($db) {
 	    $sql = "Select id, set_val from settings where set_name='SP_API_KEY'";
@@ -604,7 +612,7 @@ class Install {
 	        $apiKey .= rand(10000000, 100000000);
 	        $apiKey .= rand(10000000, 100000000);
 	        $apiKey = md5($apiKey);
-
+	        
 	        if (empty($apiInfo['id'])) {
 	            $sql = "Insert into settings(set_label,set_name,set_val,set_type) values('Seo Panel API Key', 'SP_API_KEY', '$apiKey', 'large')";
 	        } else {
@@ -612,6 +620,6 @@ class Install {
 	        }
 	        $apiInfo = $db->query($sql);
 	    }
-	}
+	}	    
 }
 ?>
