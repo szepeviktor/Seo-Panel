@@ -43,7 +43,7 @@ class SeoToolsController extends Controller{
 
 		$this->set('menuList', $menuList);
 		$defaultArgs = empty($info['default_args']) ? "" : urldecode($info['default_args']);
-		switch(@$info['menu_sec']){
+		switch($info['menu_sec']){
 
 			case "sitemap-generator":
 				$defaultScript = "sitemap.php";
@@ -74,7 +74,7 @@ class SeoToolsController extends Controller{
 				if($seoToolInfo['status'] == 1){
 					$info['menu_sec'] = 'keyword-position-checker';
 					$defaultScript = "reports.php";
-					$defaultArgs = "sec=reportsum";
+					$defaultArgs = empty($defaultArgs) ? "sec=reportsum" : $defaultArgs;
 				}
 		}
 

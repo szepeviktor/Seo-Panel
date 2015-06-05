@@ -31,11 +31,11 @@ class Validation{
 		$this->Filters['floatnumber'] = "/^\d+$|^\d+\.\d+$|^\.\d+$/";
 		$this->Filters['phone'] = "/^[0-9\-\(\)\s\+]+$/";
 		$this->Filters['startPhone'] = "/^[0-9\+\(]$/";
-		$this->Filters['alpha']= "/[a-zA-Z]/";
+		$this->Filters['alpha']= "/^[a-zA-Z]+$/";
 		$this->Filters['name']= "/^[a-zA-Z\'\-\s]+$/";
 		$this->Filters['startName'] = "/^[a-zA-Z]$/";
 		$this->Filters['nameGen'] = "/^[0-9a-zA-Z\-\s\'\!\@\#\$\%\^\&\*\(\)\-\_\+\?\.\:\;\[\]\/\,\"\=]+$/";
-		$this->Filters['startGenName'] = $this->Filters['nameGen'];
+		$this->Filters['startGenName'] = $Filters['nameGen'];
 		$this->Filters['uname'] = "/^[0-9a-zA-Z\-\_\.]+$/";
 	}
 
@@ -54,7 +54,7 @@ class Validation{
 
 	function checkAlpha($entry){
 		$entry = stripslashes(trim($entry));
-		if(!preg_match($this->Filters['alpha'],$entry)){
+		if (!preg_match($this->Filters['alpha'], $entry)){
 			$msg = $_SESSION['text']['common']['Invalid characters'];
 			$this->flagErr = true;
 		}

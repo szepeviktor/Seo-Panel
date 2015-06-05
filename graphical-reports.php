@@ -36,7 +36,7 @@ $controller->layout = 'ajax';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-	switch(@$_POST['sec']){
+	switch($_POST['sec']){
 
 		default:
 			$controller->showGraphicalReports($_POST);
@@ -44,7 +44,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	}
 
 }else{
-	switch(@$_GET['sec']){
+	switch($_GET['sec']){
 
 		case "graph":
 			$controller->showGraph($_GET);

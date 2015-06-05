@@ -333,6 +333,21 @@ class Spider{
 			}
 		}
 
+		// check debug request is enabled
+		if (!empty($_GET['debug']) || !empty($_POST['debug'])) {
+			?>
+			<div style="width: 760px; margin-top: 30px; padding: 14px; height: 900px; overflow: auto; border: 1px solid #B0C2CC;">
+				<?php
+				if ( ($_GET['debug_format'] == 'html') || ($_POST['debug_format'] == 'html') ) {
+					highlight_string($ret['page']);
+				} else {
+					debugVar($ret, false);
+				}
+				?>
+			</div>
+			<?php
+		}
+
 		return $ret;
 	}
 
