@@ -9,34 +9,36 @@ This is the unoffical up-to-date mirror site of Seo Panel by [Geo Varghese](http
 
 | release | MD5                              |
 | ------- | -------------------------------- |
-| 3.6     | 84f0500df7399dc4d66dddabed7da382 |
-
+| 3.6.0   | 84f0500df7399dc4d66dddabed7da382 |
+| 3.7.0   | 98d9576a076d61d91553d2a3ddafd0c1 |
 
 LF line endings and trimming trailing spaces.
 
 ```bash
-find -not -path '*/.*' -type f \( -path "*.php" -o -path "*.js" -o -path "*.css" \) -exec dos2unix \{\} \;
-find -not -path '*/.*' -type f \( -path "*.php" -o -path "*.js" -o -path "*.css" \) -exec sed -i 's/[ \t]*$//' \{\} \;
+find -not -path '*/.*' -type f '(' -path "*.php" -o -path "*.js" -o -path "*.css" ')' -exec dos2unix '{}' ';'
+find -not -path '*/.*' -type f '(' -path "*.php" -o -path "*.js" -o -path "*.css" ')' -exec sed -i 's/[ \t]*$//' '{}' ';'
 ```
 
 ##### How to install/update?
 
 ```bash
+# First time
 #git clone https://github.com/szepeviktor/Seo-Panel.git
 
-#git pull
-#git checkout master
-#git checkout patches
-#git checkout install
-# update: SP_INSTALLED in config/sp-config.php
+git pull
+git checkout master
+git checkout patches
+git checkout install
+# Update: SP_INSTALLED
+editor config/sp-config.php
 
-#USER="www-data"
-#chown -R ${USER}:${USER} *
-#chmod 400 config/sp-config.php
-#chmod -R 750 tmp
+USER="www-data"
+chown -R ${USER}:${USER} *
+chmod 400 config/sp-config.php
+chmod -R 750 tmp
 
-# go to: http:// ... install/upgrade.php
-#rm -rf install
+# Go to: http:// ... install/upgrade.php
+rm -rf install/
 ```
 
 - - -
