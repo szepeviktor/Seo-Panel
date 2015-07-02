@@ -10,6 +10,11 @@ diff -r --ignore-all-space ./controllers/seotools.ctrl.php /var/www/szepe.net/se
 < 		switch($info['menu_sec']){
 ---
 > 		switch(@$info['menu_sec']){
+diff -r --ignore-all-space ./controllers/report.ctrl.php /var/www/szepe.net/server/seo/controllers/report.ctrl.php
+434c434
+< 		$dataSet->SetXAxisFormat("date");
+---
+> 		// FIXME 1970-01-01 $dataSet->SetXAxisFormat("date");
 diff -r --ignore-all-space ./graphical-reports.php /var/www/szepe.net/server/seo/graphical-reports.php
 39c39
 < 	switch($_POST['sec']){
